@@ -1,0 +1,31 @@
+import RPi.GPIO as GPIO
+import time
+
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(17, GPIO.OUT)
+GPIO.setup(27, GPIO.OUT)
+
+while True:
+    GPIO.output(17,True)
+    time.sleep(2)
+    GPIO.output(17,False)
+    time.sleep(1)
+    GPIO.output(17,True)
+    time.sleep(1)
+    GPIO.output(17,False)
+    time.sleep(1)
+
+    #  x = input()
+    #  if x == "e":
+    #    GPIO.output(17,True)
+    #  if x == "a":
+    #    GPIO.output(17,False)
+
+    input()
+    if GPIO.input(17) == 0:
+        GPIO.output(17, True)
+        GPIO.output(27, False)
+    else:
+        GPIO.output(17, False)
+        GPIO.output(27, True)
